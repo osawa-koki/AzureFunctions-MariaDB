@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.9
+    container_name: my_maria
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssword1234
+      MYSQL_DATABASE: my_db
+      MYSQL_PASSWORD: p@ssword1234
+      TZ: Asia/Tokyo
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d
