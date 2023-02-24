@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "MY_ENV": "my-env"
+  },
+  "ConnectionStrings": {
+    "MY_CONNECTION_STRING": "Server=localhost;Database=my_db;Uid=root;Pwd=P@ssword1234;"
+  }
+}
