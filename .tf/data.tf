@@ -33,8 +33,8 @@ resource "azurerm_mariadb_firewall_rule" "firewall" {
   name                = var.project_name
   resource_group_name = azurerm_resource_group.resource_group.name
   server_name         = azurerm_mariadb_server.db_server.name
-  start_ip_address    = var.ip_address_allowed
-  end_ip_address      = var.ip_address_allowed
+  start_ip_address    = var.allowed_ip_address
+  end_ip_address      = var.allowed_ip_address
 }
 
 // https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mariadb_database
