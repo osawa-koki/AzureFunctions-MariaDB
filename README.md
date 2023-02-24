@@ -63,3 +63,7 @@ RESTful APIを実装しました。
 | /user | DELETE | 指定したIDのユーザデータを削除 |
 
 `id`と`name`の2つのフィールドを持つユーザデータを扱います。  
+
+## CI/CD
+
+[公式サイト](https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-how-to-github-actions?tabs=dotnet)を参照。  
