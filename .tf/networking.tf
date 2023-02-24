@@ -48,7 +48,7 @@ resource "azurerm_network_security_rule" "nsg_rule" {
   protocol                    = "Tcp"
   source_port_range           = "*"
   destination_port_range      = "3306"
-  source_address_prefixes     = [var.ip_address_allowed]
+  source_address_prefixes     = [var.allowed_ip_address]
   destination_address_prefix  = "*"
   network_security_group_name = azurerm_network_security_group.nsg.name
 }
