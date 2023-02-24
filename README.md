@@ -31,6 +31,10 @@ dotnet run --project func
 Azure上にリソースを作成します。  
 `Terraform`を使っています。  
 
+`terraform.tfvars.example`を`terraform.tfvars`にリネームし、各設定値を入力します。  
+
+Terraform変数の設定が完了したら、以下のコマンドを実行します。  
+
 ```shell
 cd .tf
 terraform init
@@ -38,6 +42,24 @@ terraform plan
 terraform apply
 ```
 
+これで、Azure上にリソースが作成されます。  
+リソースを構築したら、クライアントからDBに接続し、`./init.sql/create_table.sql`を実行します。  
+
+接続文字列は`Server=☆project_name☆.mariadb.database.azure.com;Database=☆project_name(「-」は「_」に変換)☆;Uid=☆mariadb_admin_username☆@☆project_name☆;Pwd=☆mariadb_admin_password☆`です。  
+
 VSCodeの拡張機能であるAzure Tools(ms-vscode.vscode-node-azure-pack)を使用して、デプロイします。  
 左のサイドバーから`Azure Functions`を選択し、`Deploy to Function App`を選択します。  
 雲のマークです。  
+
+## 実装内容
+
+RESTful APIを実装しました。  
+
+| エンドポイント | HTTPメソッド | 機能 |
+| --- | --- | --- |
+| /user | GET | 全てのユーザデータを取得 |
+| /user | POST | ユーザデータを追加 |
+| /user | PUT | 指定したIDのユーザデータを更新 |
+| /user | DELETE | 指定したIDのユーザデータを削除 |
+
+`id`と`name`の2つのフィールドを持つユーザデータを扱います。  
