@@ -23,3 +23,8 @@ variable "storage_account_name" {
   type        = string
   description = "Storage account name."
 }
+
+variable "function_app_name" {
+  type        = string
+  description = "Function App name."
+}
