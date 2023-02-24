@@ -1,11 +1,4 @@
 
-resource "azurerm_mariadb_virtual_network_rule" "mariadb_vnet_rule" {
-  name                = "${var.project_name}-mariadb-vnet-rule"
-  resource_group_name = azurerm_resource_group.resource_group.name
-  server_name         = azurerm_mariadb_server.db_server.name
-  subnet_id           = azurerm_subnet.subnet.id
-}
-
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.project_name}-vnet"
   address_space       = ["10.0.0.0/16"]
@@ -33,10 +26,11 @@ resource "azurerm_subnet_network_security_group_association" "subnet_nsg" {
   network_security_group_id      = azurerm_network_security_group.nsg.id
 }
 
-resource "azurerm_network_security_group" "nsg" {
-  name                = "${var.project_name}-nsg-mariadb"
-  location            = azurerm_resource_group.resource_group.location
+resource "azurerm_mariadb_virtual_network_rule" "mariadb_vnet_rule" {
+  name                = "${var.project_name}-mariadb-vnet-rule"
   resource_group_name = azurerm_resource_group.resource_group.name
+  server_name         = azurerm_mariadb_server.db_server.name
+  subnet_id           = azurerm_subnet.subnet.id
 }
 
 resource "azurerm_network_security_rule" "nsg_rule" {
