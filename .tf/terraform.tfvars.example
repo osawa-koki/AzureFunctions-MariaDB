@@ -1,4 +1,5 @@
 project_name           = ""
 mariadb_admin_username = ""
 mariadb_admin_password = ""
-ip_address_allowed     = ""
+allowed_ip_address     = ""
+storage_account_name = ""
