@@ -4,7 +4,7 @@ resource "azurerm_service_plan" "service_plan" {
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
   os_type             = "Linux"
-  sku_name            = "P1v2"
+  sku_name            = "B1"
 }
 
 // https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/function_app.html
