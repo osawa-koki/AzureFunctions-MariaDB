@@ -128,5 +128,41 @@ namespace my_namespace
         return new BadRequestObjectResult(ex);
       }
     }
+
+    [FunctionName("UserDelete")]
+    public static IActionResult UserDelete(
+      [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "user")] HttpRequest req,
+      ILogger log
+    )
+    {
+      try
+      {
+        // JSONボディからデータを取得
+        string requestBody = new StreamReader(req.Body).ReadToEnd();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+        int? id = data?.id;
+
+        if (id == null)
+        {
+          return new BadRequestObjectResult("id is required");
+        }
+
+        MySqlConnection conn = new(Config.my_connection_string);
+        conn.Open();
+
+        string sql = "DELETE FROM users WHERE id = @id;";
+        MySqlCommand cmd = new(sql, conn);
+        cmd.Parameters.AddWithValue("@id", id);
+
+        // 作成したデータを取得
+        cmd.ExecuteNonQuery();
+
+        return new NoContentResult();
+      }
+      catch (Exception ex)
+      {
+        return new BadRequestObjectResult(ex);
+      }
+    }
   }
 }
