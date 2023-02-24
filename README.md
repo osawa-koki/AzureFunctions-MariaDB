@@ -64,6 +64,16 @@ RESTful APIを実装しました。
 
 `id`と`name`の2つのフィールドを持つユーザデータを扱います。  
 
-## CI/CD
+## GitHub Actionsでデプロイ
 
 [公式サイト](https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-how-to-github-actions?tabs=dotnet)を参照。  
+
+関数アプリの画面から発行プロファイルを取得します。  
+
+![発行プロファイル](./docs/img/get-publish-profile.png)  
+
+これをGitHubのリポジトリの`Settings` - `Secrets`に登録します。  
+名前は`AZURE_FUNCTIONAPP_PUBLISH_PROFILE`です。  
+
+あとは、`main`ブランチにプッシュするだけです。  
+自動でデプロイされます。  
