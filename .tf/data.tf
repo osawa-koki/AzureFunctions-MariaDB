@@ -17,14 +17,14 @@ resource "azurerm_mariadb_server" "db_server" {
   administrator_login          = var.mariadb_admin_username
   administrator_login_password = var.mariadb_admin_password
 
-  sku_name   = "B_Gen5_2"
-  storage_mb = 5120
-  version    = "10.2"
+  sku_name         = "GP_Gen5_4"
+  storage_mb       = 102400
+  version          = "10.3"
 
   auto_grow_enabled             = true
   backup_retention_days         = 7
   geo_redundant_backup_enabled  = false
-  public_network_access_enabled = true
+  public_network_access_enabled = false
   ssl_enforcement_enabled       = false
 }
 
