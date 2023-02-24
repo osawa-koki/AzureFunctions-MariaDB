@@ -19,7 +19,6 @@ namespace my_namespace
     {
       try
       {
-
         MySqlConnection conn = new(Config.my_connection_string);
         conn.Open();
 
