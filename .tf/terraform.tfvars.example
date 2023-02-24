@@ -1,0 +1,6 @@
+project_name           = ""
+mariadb_admin_username = ""
+mariadb_admin_password = ""
+allowed_ip_address     = ""
+storage_account_name = ""
+function_app_name = ""
