@@ -23,6 +23,8 @@ resource "azurerm_linux_function_app" "function_app" {
     }
   }
 
+  https_only = true
+
   app_settings = {
     "MY_ENV" = "my-env"
   }
