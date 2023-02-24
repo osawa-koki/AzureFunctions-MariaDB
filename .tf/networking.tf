@@ -26,11 +26,10 @@ resource "azurerm_subnet_network_security_group_association" "subnet_nsg" {
   network_security_group_id      = azurerm_network_security_group.nsg.id
 }
 
-resource "azurerm_mariadb_virtual_network_rule" "mariadb_vnet_rule" {
-  name                = "${var.project_name}-mariadb-vnet-rule"
+resource "azurerm_network_security_group" "nsg" {
+  name                = "${var.project_name}-nsg-mariadb"
+  location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
-  server_name         = azurerm_mariadb_server.db_server.name
-  subnet_id           = azurerm_subnet.subnet.id
 }
 
 resource "azurerm_network_security_rule" "nsg_rule" {
@@ -45,6 +44,13 @@ resource "azurerm_network_security_rule" "nsg_rule" {
   source_address_prefixes     = [var.allowed_ip_address]
   destination_address_prefix  = "*"
   network_security_group_name = azurerm_network_security_group.nsg.name
+}
+
+resource "azurerm_mariadb_virtual_network_rule" "mariadb_vnet_rule" {
+  name                = "${var.project_name}-mariadb-vnet-rule"
+  resource_group_name = azurerm_resource_group.resource_group.name
+  server_name         = azurerm_mariadb_server.db_server.name
+  subnet_id           = azurerm_subnet.subnet.id
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "vnet_subnet_assoc" {
