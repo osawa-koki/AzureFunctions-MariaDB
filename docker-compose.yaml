@@ -6,7 +6,7 @@ services:
     container_name: my_maria
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: p@ssword1234
+      MYSQL_ROOT_PASSWORD: P@ssword1234
       MYSQL_DATABASE: my_db
       MYSQL_PASSWORD: P@ssword1234
       TZ: Asia/Tokyo
