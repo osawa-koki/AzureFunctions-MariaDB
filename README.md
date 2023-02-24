@@ -1,6 +1,6 @@
 # AzureFunctions-MariaDB
 
-Azure FunctionsとMariaDBの組み合わせ！  
+🦝🦝🦝 Azure FunctionsとMariaDBの組み合わせ！  
 Terraformを用いてAzure上に`Azure Functions`と`Maria DB`を構築して、簡単なRESTful APIを作成します。  
 
 ![成果物](./docs/img/fruit.gif)  
