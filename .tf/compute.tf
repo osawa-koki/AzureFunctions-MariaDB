@@ -25,7 +25,7 @@ resource "azurerm_linux_function_app" "function_app" {
   }
 
   connection_string {
-    name      = "my_connection_string"
+    name      = "MY_CONNECTION_STRING"
     type      = "MySql"
     value     = "Server=${azurerm_mariadb_server.db_server.name}.mariadb.database.azure.com;Database=${azurerm_mariadb_database.db_database.name};Uid=${var.mariadb_admin_username}@${azurerm_mariadb_server.db_server.name};Pwd=${var.mariadb_admin_password}"
   }
