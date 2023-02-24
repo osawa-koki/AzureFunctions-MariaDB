@@ -32,7 +32,7 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = azurerm_resource_group.resource_group.name
 }
 
-resource "azurerm_network_security_rule" "nsg_rule" {
+resource "azurerm_network_security_rule" "nsg_rule_maria" {
   name                        = "${var.project_name}-allow-mariadb"
   resource_group_name         = azurerm_resource_group.resource_group.name
   priority                    = 100
@@ -42,6 +42,33 @@ resource "azurerm_network_security_rule" "nsg_rule" {
   source_port_range           = "*"
   destination_port_range      = "3306"
   source_address_prefixes     = [var.allowed_ip_address]
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.nsg.name
+}
+resource "azurerm_network_security_rule" "nsg_rule_http" {
+  name                        = "${var.project_name}-allow-http"
+  resource_group_name         = azurerm_resource_group.resource_group.name
+  priority                    = 200
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "80"
+  source_address_prefixes     = ["0.0.0.0/0"]
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.nsg.name
+}
+
+resource "azurerm_network_security_rule" "nsg_rule_https" {
+  name                        = "${var.project_name}-allow-https"
+  resource_group_name         = azurerm_resource_group.resource_group.name
+  priority                    = 300
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "443"
+  source_address_prefixes     = ["0.0.0.0/0"]
   destination_address_prefix  = "*"
   network_security_group_name = azurerm_network_security_group.nsg.name
 }
