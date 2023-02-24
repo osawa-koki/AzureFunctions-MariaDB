@@ -54,6 +54,6 @@ resource "azurerm_network_security_rule" "nsg_rule" {
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "vnet_subnet_assoc" {
-  app_service_id = azurerm_function_app.function_app.id
+  app_service_id = azurerm_linux_function_app.function_app.id
   subnet_id      = azurerm_subnet.subnet.id
 }
